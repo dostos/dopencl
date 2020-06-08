@@ -143,6 +143,9 @@ cl::Platform getPlatform(const std::string *platformName) {
     /*
      * Select platform
      */
+    dcl::util::Logger << dcl::util::Info
+                << platforms.size() 
+                << std::endl;
     auto platform = std::begin(platforms);
     while (platform != std::end(platforms)) {
         std::string version;
@@ -156,13 +159,16 @@ cl::Platform getPlatform(const std::string *platformName) {
         platform->getInfo(CL_PLATFORM_VERSION, &version);
         getOpenCLVersion(version, major, minor, info);
 
-        if (platformName) {
-            std::string name;
+        std::string name;
 
-            /*
-             * select platform by name
-             */
-            platform->getInfo(CL_PLATFORM_NAME, &name);
+        /*
+            * select platform by name
+            */
+        platform->getInfo(CL_PLATFORM_NAME, &name);
+        dcl::util::Logger << dcl::util::Info
+                    << "Platform '" << name 
+                    << std::endl;
+        if (platformName) {
             if ((name.find(*platformName) != std::string::npos)) {
                 if (major < 1 || (major == 1 && minor < 1)) {
                     dcl::util::Logger << dcl::util::Warning
@@ -216,9 +222,16 @@ void dOpenCLd::run() {
 
     /* attach to connection manager */
     _communicationManager->setDaemon(this);
+
+	dcl::util::Logger << dcl::util::Info
+	        << "setDaemon" << std::endl;
     _communicationManager->addConnectionListener(*this);
 
 	_communicationManager->start();
+
+    
+	dcl::util::Logger << dcl::util::Info
+	        << "Start" << std::endl;
 
     /* TODO Process connections in run method rather than in the callback methods */
 

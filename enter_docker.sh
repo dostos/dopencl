@@ -1,0 +1,1 @@
+docker run --gpus all --privileged -v  $(pwd):/dopencl -it --entrypoint /bin/bash gpuhotspot:1.0

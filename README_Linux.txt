@@ -167,6 +167,8 @@ Project structure
 +- test                         Test suite (based on Boost Test Library, experimental)
 
 
+export LD_PRELOAD=icdpp/libdOpenCL.so
+
 ------------
 Known Issues
 ------------

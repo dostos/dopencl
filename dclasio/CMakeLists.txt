@@ -72,9 +72,9 @@ install(TARGETS dcl
 	RUNTIME DESTINATION lib
 	ARCHIVE DESTINATION lib
 	LIBRARY DESTINATION lib)
-	
+
 # TODO Install OpenCL API extension headers
-#install(FILES ${CL_WWU_HEADERS} DESTINATION include/CL)
+#install(FILES ${CL_WWU_HEADERS} DESTINATION include)
 # TODO Install dOpenCL API headers
-#install(FILES ${DCL_HEADERS} DESTINATION include/dcl)
+#install(FILES ${DCL_HEADERS} DESTINATION include)
 # TODO Install dOpenCL API documentation

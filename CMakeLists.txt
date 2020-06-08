@@ -17,7 +17,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	endif()
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
-option(BUILD_UNIT_TESTS "Build dOpenCL unit tests (experimental)" OFF)
+option(BUILD_UNIT_TESTS "Build dOpenCL unit tests (experimental)" ON)
 
 #
 # dOpenCL version information
@@ -29,6 +29,8 @@ set(DCL_VERSION_MAJOR 0)
 set(DCL_VERSION_MINOR 4)
 set(DCL_VERSION_PATCH 0)
 set(DCL_VERSION ${DCL_VERSION_MAJOR}.${DCL_VERSION_MINOR}.${DCL_VERSION_PATCH})
+
+add_definitions(-DVECTOR_CLASS=std::vector -DCL_HPP_ENABLE_PROGRAM_CONSTRUCTION_FROM_ARRAY_COMPATIBILITY)
 
 add_subdirectory (dclasio)
 add_subdirectory (daemon)
@@ -83,4 +85,5 @@ endif(WIN32)
 
 # CPack must be included *after* the CPack configuration
 include(CPack)
+
 
